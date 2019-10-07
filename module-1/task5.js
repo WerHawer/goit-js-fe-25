@@ -6,34 +6,44 @@ alert('Выполняется задание №5. Доставляем в Ки�
 
 
 let country = prompt('Вкакую страну надо доставить?', '');
-let price;
+let price = 0;
 let finalName;
-let checkedCounry = country.toLowerCase();
-switch (checkedCounry) {
+let counryLowerCase = country.toLowerCase();
+
+// Задаем правила склонения стран
+switch (counryLowerCase[counryLowerCase.length - 1]) {
+    case 'я':
+        finalName = `${counryLowerCase[0].toUpperCase()}${counryLowerCase.slice(1, -1)}ю`;
+        break;
+    case 'а':
+        finalName = `${counryLowerCase[0].toUpperCase()}${counryLowerCase.slice(1, -1)}у`;
+        break;
+    default:
+        finalName = `${counryLowerCase[0].toUpperCase()}${counryLowerCase.slice(1)}`;
+}
+
+// Выводим правильное сообщение
+switch (counryLowerCase) {
     case 'китай':
         price = 100;
-        finalName = `${checkedCounry[0].toUpperCase()}${checkedCounry.slice(1)}`;
         alert(`Доставка в ${finalName} будет стоить ${price} кредитов`);
         break;
     case 'чили':
         price = 250;
-        finalName = `${checkedCounry[0].toUpperCase()}${checkedCounry.slice(1)}`;
         alert(`Доставка в ${finalName} будет стоить ${price} кредитов`);
+        alert(message);
         break;
     case 'австралия':
         price = 170;
-        finalName = `${checkedCounry[0].toUpperCase()}${checkedCounry.slice(1, -1)}ю`;
         alert(`Доставка в ${finalName} будет стоить ${price} кредитов`);
         break;
     case 'индия':
         price = 80;
-        finalName = `${checkedCounry[0].toUpperCase()}${checkedCounry.slice(1, -1)}ю`;
         alert(`Доставка в ${finalName} будет стоить ${price} кредитов`);
         break;
     case 'ямайка':
         price = 120;
-        finalName = `${checkedCounry[0].toUpperCase()}${checkedCounry.slice(1, -1)}у`;
-        alert(`Доставка на ${finalName} будет стоить ${price} кредитов`);
+        alert(`Доставка в ${finalName} будет стоить ${price} кредитов`);
         break;
     default:
         alert('В Вашей стране доставка не доступна.');
