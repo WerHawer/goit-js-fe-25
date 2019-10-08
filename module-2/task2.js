@@ -1,4 +1,7 @@
 'use strict';
+
+alert(`Выполняется задание №2 расчет стоимости гравировки. Результат в консоли`);
+
 const calculateEngravingPrice = function(frase, pricePerWord = 10) {
     const arrFrase = frase.split(' ');
     const totalPrice = arrFrase.length * pricePerWord;
