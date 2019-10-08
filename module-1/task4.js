@@ -7,9 +7,9 @@ alert('Выполняется задание №4. Купи слона... ой, 
 
 let credits = 23580;
 const prisePerDroid = 3000;
-let howMuchDroid = prompt('Сколько дроидов Вы хотели бы купить?', '0');
+const howMuchDroid = prompt('Сколько дроидов Вы хотели бы купить?', '0');
 let totalPrice = howMuchDroid * prisePerDroid;
-let leftCredits = credits - totalPrice;
+const leftCredits = credits - totalPrice;
 if (howMuchDroid === null) {
     console.log('отменено пользователем');
 } else {
