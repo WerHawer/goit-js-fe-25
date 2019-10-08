@@ -1,6 +1,6 @@
 'use strict';
 
-alert(`Выполняется задание №2 расчет стоимости гравировки. Результат в консоли`);
+alert(`Выполняется задание №2 расчет стоимости гравировки. Результат в консоле`);
 
 const calculateEngravingPrice = function(frase, pricePerWord = 10) {
     const arrFrase = frase.split(' ');

@@ -1,5 +1,7 @@
 'use strict';
-alert(`Выполняется задание №3 поиск самого длинного слова. Результат в консоли`);
+
+alert(`Выполняется задание №3 поиск самого длинного слова. Результат в консоле`);
+
 const findLongestWord = function(str) {
     const arrStr = str.split(' ');
     let longestWord = arrStr[0];
