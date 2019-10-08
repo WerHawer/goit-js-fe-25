@@ -12,19 +12,24 @@ const addToArr = function() {
         input = prompt('введите число');
         numbers.push(input);
     }
-    if (input === null) {
+    if (input === null) { //can work without this 'if', but last elem of array will be 'null'
         numbers.pop();
     }
 };
 
 const summArr = function(arr) {
-    for (let elem of arr) {
-        total += +elem;
+    if (arr.length === 0) {
+        alert(`Массив пустой, надо было ввести хоть одну цифру`);
+    } else {
+        for (let elem of arr) {
+            total += +elem;
+        }
+        console.log(`щбщая сумма всех чисел: ${total}`);
     }
-    return total;
+
 };
 
 
 addToArr();
+summArr(numbers);
 console.log(numbers);
-console.log(`общая сумма чисел равна ${summArr(numbers)}`);
