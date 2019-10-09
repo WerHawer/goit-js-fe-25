@@ -9,11 +9,16 @@ let total = 0;
 
 const addToArr = function() {
     while (input !== null) {
+
         input = prompt('введите число');
-        numbers.push(input);
-    }
-    if (input === null) { //can work without this 'if', but last elem of array will be 'null'
-        numbers.pop();
+
+        if (isFinite(input) !== true) {
+            alert(`введите ТОЛЬКО число`);
+        } else if (input === null || input === '') {
+            continue;
+        } else {
+            numbers.push(input);
+        }
     }
 };
 
@@ -24,7 +29,7 @@ const summArr = function(arr) {
         for (let elem of arr) {
             total += +elem;
         }
-        console.log(`щбщая сумма всех чисел: ${total}`);
+        console.log(`общая сумма всех чисел: ${total}`);
     }
 
 };
