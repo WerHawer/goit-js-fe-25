@@ -112,7 +112,7 @@ const account = {
 const addHistoryToPage = () => {
     let finalHistoryStr;
 
-    const countTransactions = () => {
+    const changeTransactionsToStr = () => {
 
         for (let i = 0; i < account.transactions.length; i += 1) {
             let arrOfTransactionsObjs = Object.values(account.transactions[i]);
@@ -121,66 +121,84 @@ const addHistoryToPage = () => {
         }
 
     }
-    countTransactions();
+    changeTransactionsToStr();
 
     let newDiv = `<div class="history__elem"> <span> ${finalHistoryStr} </span> </div>`;
     let pageHistory = document.querySelector('.history');
+
     pageHistory.insertAdjacentHTML("afterbegin", newDiv);
 };
 
-const addBalanceToPage = () => {
-    let pageBalance = document.querySelector('.form__balance');
+const addBalanceToPage = (name) => {
+    let pageBalance = document.querySelector(name);
     pageBalance.innerHTML = `Ваш баланс: ${account.balance}`;
 };
 
 
-const howMutchMoney = () => {
-    let amount = document.querySelector('.form__amount').value;
+const getHowMutchMoney = (name) => {
+    let amount = document.querySelector(name).value;
 
     return +amount;
 };
 
-const addFromPage = () => {
+const getRadioStatus = (name) => {
 
-    let rad = document.getElementsByName('radio__balance');
-    let amount = howMutchMoney();
+    let rad = document.getElementsByName(name);
+
 
     for (let i = 0; i < rad.length; i += 1) {
+
         if (rad[0].checked) {
-
-            let smalBalance = account.withdraw(amount);
-
-            if (smalBalance == 'stop') {
-                return;
-            } else {
-                addBalanceToPage();
-                addHistoryToPage();
-                console.log('Current balance: ' + account.balance)
-
-                return rad;
-            }
+            return 'isMinus';
 
         } else if (rad[1].checked) {
-
-            account.deposit(amount);
-            addBalanceToPage();
-            addHistoryToPage();
-
-            console.log('Current balance: ' + account.balance)
-
-            return rad;
+            return 'isPlus'
         }
     }
-
 }
+
+const addToPage = () => {
+
+    let radioStatus = getRadioStatus('radio__balance');
+    let amount = getHowMutchMoney('.form__amount');
+
+    if (radioStatus == 'isMinus') {
+
+        let smalBalance = account.withdraw(amount);
+
+        if (smalBalance == 'stop') {
+            return;
+
+        } else {
+            addBalanceToPage('.form__balance');
+            addHistoryToPage();
+
+            console.log('Current balance: ' + account.balance);
+
+            return;
+        }
+
+    } else if (radioStatus == 'isPlus') {
+
+        account.deposit(amount);
+        addBalanceToPage('.form__balance');
+        addHistoryToPage();
+
+        console.log('Current balance: ' + account.balance)
+
+        return;
+    }
+}
+
+
 
 
 let buttonClick = document.querySelector('.form__button');
 
-buttonClick.onclick = addFromPage;
+buttonClick.onclick = addToPage;
 
 account.getBalance();
-addBalanceToPage();
+addBalanceToPage('.form__balance');
 addHistoryToPage();
 
 
