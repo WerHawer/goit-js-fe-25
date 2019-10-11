@@ -1,0 +1,49 @@
+.form {
+    width: 200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.form__amount {
+    width: 90%;
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+.form__button {
+    width: 50%;
+    align-self: center;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.form__label {
+    cursor: pointer;
+}
+
+.form__balance {
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.history {
+    width: 200px;
+    /* min-height: 30px; */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.history__elem {
+    margin-bottom: 10px;
+}
