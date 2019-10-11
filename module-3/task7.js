@@ -189,5 +189,5 @@ console.log('balance: ' + account.balance);
 
 
 
-// console.log('all deposits: ' + account.getTransactionTotal('deposit'));
-// console.log('all withdraws: -' + account.getTransactionTotal('withdraw'));
+console.log('all deposits: ' + account.getTransactionTotal('deposit'));
+console.log('all withdraws: -' + account.getTransactionTotal('withdraw'));
