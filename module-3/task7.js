@@ -114,11 +114,8 @@ const addHistoryToPage = () => {
 
     const changeTransactionsToStr = () => {
 
-        for (let i = 0; i < account.transactions.length; i += 1) {
-            let arrOfTransactionsObjs = Object.values(account.transactions[i]);
-            finalHistoryStr = arrOfTransactionsObjs.join(' | ');
-
-        }
+        let arrOfTransactionsObjs = Object.values(account.transactions[account.transactions.length - 1]);
+        finalHistoryStr = arrOfTransactionsObjs.join(' | ');
 
     }
     changeTransactionsToStr();
