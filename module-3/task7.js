@@ -1,6 +1,6 @@
 'use strict'
 
-// alert('Выполняется задание №5. Фильтрация по ключу. Результат в коноле.')
+alert('Выполняется задание №7. Финансовый калькулятор. Сделал с интерфейсом.')
 
 
 const Transaction = {
@@ -200,9 +200,9 @@ addHistoryToPage();
 
 
 
-console.log('balance: ' + account.balance);
+// console.log('balance: ' + account.balance);
 
 
 
-console.log('all deposits: ' + account.getTransactionTotal('deposit'));
-console.log('all withdraws: -' + account.getTransactionTotal('withdraw'));
+// console.log('all deposits: ' + account.getTransactionTotal('deposit'));
+// console.log('all withdraws: -' + account.getTransactionTotal('withdraw'));
