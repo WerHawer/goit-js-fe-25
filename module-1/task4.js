@@ -6,16 +6,16 @@ alert('Выполняется задание №4. Купи слона... ой, 
 
 
 let credits = 23580;
-const prisePerDroid = 3000;
+const pricePerDroid = 3000;
 const howMuchDroid = prompt('Сколько дроидов Вы хотели бы купить?', '0');
-let totalPrice = howMuchDroid * prisePerDroid;
+let totalPrice = howMuchDroid * pricePerDroid;
 const leftCredits = credits - totalPrice;
+
 if (howMuchDroid === null) {
     console.log('отменено пользователем');
-} else {
-    if (totalPrice > credits) {
-        console.log('Недостаточно средств на счету!');
-    } else if (totalPrice < credits) {
-        console.log(`Вы купили ${howMuchDroid} дроидов, на счету осталось ${leftCredits} кредитов`);
-    }
-};
+
+} else if (totalPrice > credits) {
+    console.log('Недостаточно средств на счету!');
+
+} else(totalPrice < credits)
+console.log(`Вы купили ${howMuchDroid} дроидов, на счету осталось ${leftCredits} кредитов`);
