@@ -14,8 +14,10 @@ const addToArr = function() {
 
         if (isFinite(input) !== true) {
             alert(`введите ТОЛЬКО число`);
+
         } else if (input === null || input === '') {
             continue;
+
         } else {
             numbers.push(input);
         }
@@ -25,10 +27,12 @@ const addToArr = function() {
 const summArr = function(arr) {
     if (arr.length === 0) {
         alert(`Массив пустой, надо было ввести хоть одну цифру`);
+
     } else {
         for (let elem of arr) {
             total += +elem;
         }
+
         console.log(`общая сумма всех чисел: ${total}`);
     }
 

@@ -3,6 +3,7 @@
 alert(`Выполняется задание №5 проверяем наличие ключевых слов. Результат в консоле`);
 
 const checkForSpam = function(str) {
+
     str = str.toLowerCase();
     if (str.includes('spam') || str.includes('sale')) {
         return true;
