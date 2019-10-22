@@ -115,24 +115,15 @@ console.log('TASK-4');
 console.log(getInactiveUsers(users)); // [объект Moore Hensley, объект Ross Vazquez, объект Blackburn Dotson]
 
 // TASK-5
-const getUserWithEmail = (users, email) =>
-    users.find(user => {
-        if (user.email === email) {
-            return user;
-        }
-    });
+const getUserWithEmail = (users, email) => users.find(user => user.email === email);
+
 
 console.log('TASK-5');
 console.log(getUserWithEmail(users, 'shereeanthony@kog.com')); // {объект пользователя Sheree Anthony}
 console.log(getUserWithEmail(users, 'elmahead@omatom.com')); // {объект пользователя Elma Head}
 
 // TASK-6
-const getUsersWithAge = (users, min, max) =>
-    users.filter(user => {
-        if (user.age > min && user.age < max) {
-            return user;
-        }
-    });
+const getUsersWithAge = (users, min, max) => users.filter(user => user.age > min && user.age < max);
 
 console.log('TASK-6');
 console.log(getUsersWithAge(users, 20, 30));
