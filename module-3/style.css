@@ -35,8 +35,7 @@
 }
 
 .history {
-    width: 200px;
-    /* min-height: 30px; */
+    width: 400px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -45,5 +44,16 @@
 }
 
 .history__elem {
-    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.history__head,
+.history__main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }

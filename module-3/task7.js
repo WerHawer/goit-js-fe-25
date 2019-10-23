@@ -110,38 +110,42 @@ const account = {
 //Закончил основное задание, работаем со страничкой
 
 const addHistoryToPage = () => {
-    let finalHistoryStr;
 
-    const changeTransactionsToStr = () => {
+    const message = document.querySelector('.message');
+    const pageHistory = document.querySelector('.history__head');
 
-        let arrOfTransactionsObjs = Object.values(account.transactions[account.transactions.length - 1]);
-        finalHistoryStr = arrOfTransactionsObjs.join(' | ');
+    function newDiv({ id, type, amount }) {
 
+        if (!id && !type && !amount) {
+            return `<div class="history__main message"><span>У Вас ещё нет транзакций</span></div>`;
+        } else if (message) {
+            message.remove();
+        }
+
+        return ` <div class="history__main">
+        <div class="id history__elem">${id}</div>
+    <div class="type history__elem">${type}</div>
+    <div class="amount history__elem">${amount}</div>
+    </div>`;
     }
-    changeTransactionsToStr();
 
-    let newDiv = `<div class="history__elem"> <span> ${finalHistoryStr} </span> </div>`;
-    let pageHistory = document.querySelector('.history');
+    const finalHistory = account.transactions.reduce((acc, el) => acc = newDiv(el), '')
 
-    pageHistory.insertAdjacentHTML("afterbegin", newDiv);
+    pageHistory.insertAdjacentHTML("afterend", finalHistory);
 };
 
 const addBalanceToPage = (name) => {
-    let pageBalance = document.querySelector(name);
+    const pageBalance = document.querySelector(name);
     pageBalance.innerHTML = `Ваш баланс: ${account.balance}`;
 };
 
-
 const getHowMutchMoney = (name) => {
-    let amount = document.querySelector(name).value;
-
+    const amount = document.querySelector(name).value;
     return +amount;
 };
 
 const getRadioStatus = (name) => {
-
-    let rad = document.getElementsByName(name);
-
+    const rad = document.querySelectorAll(name);
 
     for (let i = 0; i < rad.length; i += 1) {
 
@@ -156,22 +160,20 @@ const getRadioStatus = (name) => {
 
 const addToPage = () => {
 
-    let radioStatus = getRadioStatus('radio__balance');
-    let amount = getHowMutchMoney('.form__amount');
+    const radioStatus = getRadioStatus('input[type="radio"]');
+    const amount = getHowMutchMoney('.form__amount');
+
 
     if (radioStatus == 'isMinus') {
 
-        let smalBalance = account.withdraw(amount);
+        const minusBalance = account.withdraw(amount);
 
-        if (smalBalance == 'stop') {
+        if (minusBalance == 'stop') {
             return;
 
         } else {
             addBalanceToPage('.form__balance');
             addHistoryToPage();
-
-            console.log('Current balance: ' + account.balance);
-
             return;
         }
 
@@ -180,29 +182,14 @@ const addToPage = () => {
         account.deposit(amount);
         addBalanceToPage('.form__balance');
         addHistoryToPage();
-
-        console.log('Current balance: ' + account.balance)
-
         return;
     }
 }
 
-
-
-
-let buttonClick = document.querySelector('.form__button');
+const buttonClick = document.querySelector('.form__button');
 
 buttonClick.onclick = addToPage;
 
 account.getBalance();
 addBalanceToPage('.form__balance');
 addHistoryToPage();
-
-
-
-// console.log('balance: ' + account.balance);
-
-
-
-// console.log('all deposits: ' + account.getTransactionTotal('deposit'));
-// console.log('all withdraws: -' + account.getTransactionTotal('withdraw'));
