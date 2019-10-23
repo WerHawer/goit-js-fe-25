@@ -1,5 +1,13 @@
+.wrap {
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 .form {
-    width: 200px;
+    width: 30%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -9,17 +17,19 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    width: 50%;
+    align-self: center;
     margin-bottom: 10px;
 }
 
 .form__amount {
-    width: 90%;
+    width: 50%;
     margin-bottom: 10px;
     align-self: center;
 }
 
 .form__button {
-    width: 50%;
+    width: 25%;
     align-self: center;
     cursor: pointer;
     margin-bottom: 15px;
@@ -34,8 +44,9 @@
     margin-bottom: 20px;
 }
 
-.history {
-    width: 400px;
+.history,
+.history__id {
+    width: 30%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -43,8 +54,9 @@
     justify-content: center;
 }
 
-.history__elem {
-    width: 100%;
+.history__elem,
+.fined__id {
+    width: 70px;
     display: flex;
     justify-content: center;
     padding: 5px;
@@ -55,5 +67,22 @@
 .history__main {
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 400px;
+}
+
+.find_id,
+.find__button {
+    max-height: 20px;
+    margin-bottom: 10px;
+}
+
+.fined__id {
+    max-height: 20px;
+}
+
+.find__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
 }

@@ -60,28 +60,39 @@ const account = {
      * Метод возвращает текущий баланс
      */
     getBalance() {
-        this.balance = 0;
-        for (let i = 0; i < this.transactions.length; i += 1) {
 
-            if (this.transactions[i].type === Transaction.DEPOSIT) {
-                this.balance += this.transactions[i].amount;
-            } else if (this.transactions[i].type === Transaction.WITHDRAW) {
-                this.balance -= this.transactions[i].amount;
-            }
-        }
-        return this.balance;
+        this.balance = 0;
+
+        //     for (let i = 0; i < this.transactions.length; i += 1) {
+
+        //         if (this.transactions[i].type === Transaction.DEPOSIT) {
+        //             this.balance += this.transactions[i].amount;
+        //         } else if (this.transactions[i].type === Transaction.WITHDRAW) {
+        //             this.balance -= this.transactions[i].amount;
+        //         }
+        //     }
+        //     return this.balance;
+        // },
+
+        this.transactions.reduce((balance, el) => el.type == Transaction.DEPOSIT ?
+            this.balance += el.amount :
+            this.balance -= el.amount);
+
     },
+
 
     /*
      * Метод ищет и возвращает объект транзации по id
      */
     getTransactionDetails(id) {
-        for (let i = 0; i < this.transactions.length; i += 1) {
-            if (this.transactions[i].id === id) {
+        // for (let i = 0; i < this.transactions.length; i += 1) {
+        //     if (this.transactions[i].id === id) {
 
-                return this.transactions[i];
-            }
-        }
+        //         return this.transactions[i];
+        //     }
+        // }
+
+        this.transactions.find(el => el.id == id)
     },
 
     /*
@@ -186,10 +197,41 @@ const addToPage = () => {
     }
 }
 
+const findForId = () => {
+
+    const getId = document.querySelector('.find_id').value;
+    const historyId = document.querySelector('.history__id');
+    const pageHistory = document.querySelector('.history__head');
+
+
+    function newDiv({ id, type, amount }) {
+
+        return `<div class="history__main">
+        <div class="fined__id">${id}</div>
+    <div class="fined__id">${type}</div>
+    <div class="fined__id">${amount}</div>
+    </div>`;
+    }
+
+    const finalHistory = account.transactions
+        .find(el => el.id == getId);
+
+    historyId.insertAdjacentHTML('afterBegin', newDiv(finalHistory));
+
+}
+
+
+
+
 const buttonClick = document.querySelector('.form__button');
+const buttonFind = document.querySelector('.find__button');
 
 buttonClick.onclick = addToPage;
+buttonFind.onclick = findForId;
 
 account.getBalance();
 addBalanceToPage('.form__balance');
 addHistoryToPage();
+
+console.log(account.transactions.find(el => el.id == document.querySelector('.find_id').value));
+console.log(document.querySelector('.find_id').value)
