@@ -232,6 +232,3 @@ buttonFind.onclick = findForId;
 account.getBalance();
 addBalanceToPage('.form__balance');
 addHistoryToPage();
-
-console.log(account.transactions.find(el => el.id == document.querySelector('.find_id').value));
-console.log(document.querySelector('.find_id').value)
