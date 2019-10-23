@@ -213,8 +213,7 @@ const findForId = () => {
     </div>`;
     }
 
-    const finalHistory = account.transactions
-        .find(el => el.id == getId);
+    const finalHistory = account.transactions.find(el => el.id == getId);
 
     historyId.insertAdjacentHTML('afterBegin', newDiv(finalHistory));
 
