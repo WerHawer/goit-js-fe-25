@@ -201,7 +201,7 @@ const findForId = () => {
 
     const getId = document.querySelector('.find_id').value;
     const historyId = document.querySelector('.history__id');
-    const pageHistory = document.querySelector('.history__head');
+
 
 
     function newDiv({ id, type, amount }) {
