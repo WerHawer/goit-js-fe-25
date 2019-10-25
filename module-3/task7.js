@@ -120,6 +120,67 @@ const account = {
 
 //Закончил основное задание, работаем со страничкой
 
+const formInput = document.querySelector('.form');
+const formFind = document.querySelector('.find__block');
+
+formInput.addEventListener('submit', eventSubmit);
+formFind.addEventListener('submit', eventFindId)
+
+function eventFindId(event) {
+
+    event.preventDefault();
+
+    const getId = formFind.elements.id__input.value;
+    const historyId = document.querySelector('.history__id');
+
+
+
+    function newDiv({ id, type, amount }) {
+
+        return `<div class="history__main">
+        <div class="fined__id">${id}</div>
+    <div class="fined__id">${type}</div>
+    <div class="fined__id">${amount}</div>
+    </div>`;
+    }
+
+    const finalHistory = account.transactions.find(el => el.id == getId);
+
+    historyId.insertAdjacentHTML('afterBegin', newDiv(finalHistory));
+
+}
+
+
+function eventSubmit(event) {
+
+    event.preventDefault();
+
+    const radioStatus = getRadioStatus(formInput);
+    const amount = getHowMutchMoney(formInput);
+
+
+    if (radioStatus == 'isMinus') {
+
+        const minusBalance = account.withdraw(amount);
+
+        if (minusBalance == 'stop') {
+            return;
+
+        } else {
+            addBalanceToPage('.form__balance');
+            addHistoryToPage();
+            return;
+        }
+
+    } else if (radioStatus == 'isPlus') {
+
+        account.deposit(amount);
+        addBalanceToPage('.form__balance');
+        addHistoryToPage();
+        return;
+    }
+}
+
 const addHistoryToPage = () => {
 
     const message = document.querySelector('.message');
@@ -151,82 +212,86 @@ const addBalanceToPage = (name) => {
 };
 
 const getHowMutchMoney = (name) => {
-    const amount = document.querySelector(name).value;
+    const amount = name.elements.amount.value;
+    // const amount = document.querySelector(name).value;
     return +amount;
 };
 
 const getRadioStatus = (name) => {
-    const rad = document.querySelectorAll(name);
+    const rad = name.elements.radio__balance.value;
+    return rad;
 
-    for (let i = 0; i < rad.length; i += 1) {
+    // const rad = document.querySelectorAll(name);
 
-        if (rad[0].checked) {
-            return 'isMinus';
+    // for (let i = 0; i < rad.length; i += 1) {
 
-        } else if (rad[1].checked) {
-            return 'isPlus'
-        }
-    }
+    //     if (rad[0].checked) {
+    //         return 'isMinus';
+
+    //     } else if (rad[1].checked) {
+    //         return 'isPlus'
+    //     }
+    // }
 }
 
-const addToPage = () => {
+// const addToPage = () => {
 
-    const radioStatus = getRadioStatus('input[type="radio"]');
-    const amount = getHowMutchMoney('.form__amount');
-
-
-    if (radioStatus == 'isMinus') {
-
-        const minusBalance = account.withdraw(amount);
-
-        if (minusBalance == 'stop') {
-            return;
-
-        } else {
-            addBalanceToPage('.form__balance');
-            addHistoryToPage();
-            return;
-        }
-
-    } else if (radioStatus == 'isPlus') {
-
-        account.deposit(amount);
-        addBalanceToPage('.form__balance');
-        addHistoryToPage();
-        return;
-    }
-}
-
-const findForId = () => {
-
-    const getId = document.querySelector('.find_id').value;
-    const historyId = document.querySelector('.history__id');
+//     const radioStatus = getRadioStatus('input[type="radio"]');
+//     const amount = getHowMutchMoney('.form__amount');
 
 
+//     if (radioStatus == 'isMinus') {
 
-    function newDiv({ id, type, amount }) {
+//         const minusBalance = account.withdraw(amount);
 
-        return `<div class="history__main">
-        <div class="fined__id">${id}</div>
-    <div class="fined__id">${type}</div>
-    <div class="fined__id">${amount}</div>
-    </div>`;
-    }
+//         if (minusBalance == 'stop') {
+//             return;
 
-    const finalHistory = account.transactions.find(el => el.id == getId);
+//         } else {
+//             addBalanceToPage('.form__balance');
+//             addHistoryToPage();
+//             return;
+//         }
 
-    historyId.insertAdjacentHTML('afterBegin', newDiv(finalHistory));
+//     } else if (radioStatus == 'isPlus') {
 
-}
+//         account.deposit(amount);
+//         addBalanceToPage('.form__balance');
+//         addHistoryToPage();
+//         return;
+//     }
+// }
+
+// const findForId = () => {
+
+//     const getId = document.querySelector('.find_id').value;
+//     const historyId = document.querySelector('.history__id');
 
 
 
+//     function newDiv({ id, type, amount }) {
 
-const buttonClick = document.querySelector('.form__button');
-const buttonFind = document.querySelector('.find__button');
+//         return `<div class="history__main">
+//         <div class="fined__id">${id}</div>
+//     <div class="fined__id">${type}</div>
+//     <div class="fined__id">${amount}</div>
+//     </div>`;
+//     }
 
-buttonClick.onclick = addToPage;
-buttonFind.onclick = findForId;
+//     const finalHistory = account.transactions.find(el => el.id == getId);
+
+//     historyId.insertAdjacentHTML('afterBegin', newDiv(finalHistory));
+
+// }
+
+
+
+
+// const buttonClick = document.querySelector('.form__button');
+// const buttonFind = document.querySelector('.find__button');
+
+// buttonClick.onclick = addToPage;
+// buttonFind.onclick = findForId;
 
 account.getBalance();
 addBalanceToPage('.form__balance');
