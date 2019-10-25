@@ -12,31 +12,31 @@
 <body>
     <main class="wrap">
 
-        <div class="find__block">
-            <input type="number" class="find_id" placeholder="введите ID опреации">
+        <form class="find__block">
+            <input type="number" class="find_id" name="id__input" placeholder="введите ID опреации">
             <button class="find__button">Find</button>
             <div class="history__id"></div>
-        </div>
+        </form>
 
 
-        <div class="form">
+        <form class="form">
             <div class="form__input">
                 <label for="rad0" class="form__label">
-            <input type="radio" name="radio__balance" value="0" id="rad0" checked>
+            <input type="radio" name="radio__balance" value="isMinus" id="rad0">
             Расход
         </label>
 
                 <label for="rad1" class="form__label">
-            <input type="radio" name="radio__balance" value="1" id="rad1">
+            <input type="radio" name="radio__balance" value="isPlus" id="rad1" checked>
             Доход
         </label>
             </div>
-            <input type="number" class="form__amount" autofocus>
+            <input type="number" class="form__amount" name="amount" autofocus>
 
             <button class="form__button">добавить</button>
 
             <div class="form__balance"></div>
-        </div>
+        </form>
 
         <div class="history">
 
