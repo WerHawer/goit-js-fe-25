@@ -10,7 +10,7 @@ const Transaction = {
 
 const account = {
 
-    balance: 0, // Текущий баланс счета
+    balance: 0, // Текущий баланс счетаe
 
     // История транзакций
     transactions: [
@@ -51,8 +51,9 @@ const account = {
      * Принимает объект трназкции
      */
     addTransaction(transaction) {
+
         this.transactions.push(transaction);
-        console.table(this.transactions)
+
         this.getBalance();
     },
 
@@ -92,7 +93,9 @@ const account = {
         //     }
         // }
 
-        this.transactions.find(el => el.id == id)
+        const ourId = this.transactions.find(el => el.id == id);
+
+        return ourId;
     },
 
     /*
@@ -131,7 +134,7 @@ function eventFindId(event) {
     event.preventDefault();
 
     const getId = formFind.elements.id__input.value;
-    const historyId = document.querySelector('.history__id');
+    const historyId = document.querySelector('.history__id'); 
 
 
 
@@ -144,7 +147,8 @@ function eventFindId(event) {
     </div>`;
     }
 
-    const finalHistory = account.transactions.find(el => el.id == getId);
+    // const finalHistory = account.transactions.find(el => el.id == getId);
+    const finalHistory = account.getTransactionDetails(getId);
 
     historyId.insertAdjacentHTML('afterBegin', newDiv(finalHistory));
 
