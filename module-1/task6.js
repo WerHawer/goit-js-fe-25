@@ -11,7 +11,7 @@ let total = 0;
 do {
     input = prompt('введите любое число', '');
 
-    if (isFinite(input) !== true) {
+    if (!isFinite(input)) {
         alert('Введено не число. Повторите ввод.');
 
     } else {
