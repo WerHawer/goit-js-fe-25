@@ -17,10 +17,12 @@ class Storage {
     }
 
     removeItem(item) {
-        if (items.indexOf(item) === -1) {
+        const idxItem = items.indexOf(item);
+
+        if (idxItem === -1) {
             alert(`We don't have this item in storage`)
         } else {
-            items.splice(items.indexOf(item), 1)
+            items.splice(idxItem, 1)
         }
     }
 }
