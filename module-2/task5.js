@@ -2,15 +2,16 @@
 
 alert(`Выполняется задание №5 проверяем наличие ключевых слов. Результат в консоле`);
 
-const checkForSpam = function(str) {
+const checkForSpam = str => {
 
     str = str.toLowerCase();
+
     if (str.includes('spam') || str.includes('sale')) {
-        return true;
-    } else {
-        return false;
-    }
+        return str.includes('spam') || str.includes('sale');
+    } else return str.includes('spam') || str.includes('sale');
+
 };
+
 console.log(checkForSpam('Latest technology news')); // false
 
 console.log(checkForSpam('JavaScript weekly newsletter')); // false

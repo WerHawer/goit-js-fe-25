@@ -4,8 +4,7 @@ alert(`Выполняется задание №2 расчет стоимост�
 
 const calculateEngravingPrice = function(frase, pricePerWord = 10) {
 
-    const arrFrase = frase.split(' ');
-    const totalPrice = arrFrase.length * pricePerWord;
+    const totalPrice = frase.split(' ').length * pricePerWord;
     return totalPrice;
 
 };

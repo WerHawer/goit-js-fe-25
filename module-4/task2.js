@@ -13,6 +13,7 @@ const inventory = {
 };
 
 const invokeInventoryAction = function(itemName, action) {
+    console.dir(action);
     console.log(`Invoking ${action.name} opeartion on ${itemName}`);
     action(itemName);
 };

@@ -2,12 +2,8 @@
 
 alert(`Выполняется задание №4 укорачиваем строки. Результат в консоле`);
 
-const formatString = function(string) {
-    if (string.length > 40) {
-        string = string.slice(0, 38) + '...';
-    }
-    return string;
-};
+const formatString = string => string.length > 40 ? string = string.slice(0, 38) + '...' : string;
+
 
 console.log(formatString('Nunc sed turpis. Curabitur a felis in nunc fringilla tristique.'));
 // вернется форматированная строка

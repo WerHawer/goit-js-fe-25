@@ -12,25 +12,25 @@ const addToArr = function() {
 
         input = prompt('введите число');
 
-        if (isFinite(input) !== true) {
+        if (!isFinite(input)) {
             alert(`введите ТОЛЬКО число`);
 
-        } else if (input === null || input === '') {
+        } else if (!input) {
             continue;
 
         } else {
-            numbers.push(input);
+            numbers.push(+input);
         }
     }
 };
 
 const summArr = function(arr) {
-    if (arr.length === 0) {
+    if (!arr.length) {
         alert(`Массив пустой, надо было ввести хоть одну цифру`);
 
     } else {
         for (let elem of arr) {
-            total += +elem;
+            total += elem;
         }
 
         console.log(`общая сумма всех чисел: ${total}`);
