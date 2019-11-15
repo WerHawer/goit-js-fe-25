@@ -14,7 +14,7 @@ function createBoxes(amount) {
     amount = inputNumber.value;
     createArea.innerHTML = "";
     if (!inputNumber.value) {
-        createArea.innerHTML = "Введите чисто от 1 до 100";
+        createArea.innerHTML = "Введите число от 1";
     }
 
     for (let i = 1; i <= amount; i += 1) {
