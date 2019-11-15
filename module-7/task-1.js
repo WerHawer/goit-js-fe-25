@@ -1,23 +1,15 @@
 const categories = document.querySelector('#categories');
-const childrenItems = categories.children
-const item = document.querySelectorAll('.item')
+const childrenItems = categories.children;
+const item = document.querySelectorAll('.item');
+const itemH2 = document.querySelectorAll('.item h2');
 
-console.log(`в списке ${childrenItems.length} категории`)
 
-function h2(arr) {
 
-    for (let key of arr) {
 
-        for (let children of key.children) {
+console.log(`в списке ${childrenItems.length} категории`);
 
-            if (children.tagName === 'H2') {
-                console.log(`категория ${children.textContent}`)
-            } else if (children.tagName === 'UL') {
-                console.log(`количество элементов ${children.children.length}`)
-            }
-        }
-
-    }
-}
-
-h2(item)
+itemH2.forEach(h2 => {
+    const itemH2Li = h2.nextElementSibling.children;
+    console.log(h2.textContent);
+    console.log(`кол-во элементов: ${itemH2Li.length}`);
+});
