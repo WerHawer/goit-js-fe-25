@@ -30,8 +30,9 @@ function photoMarkup(preview, original, description) {
   >
     <img
       class="gallery__image"
-      src=${preview}
+      src=''
       data-source=${original}
+      data-lazy=${preview}
       alt=${description}
     />
 
@@ -100,3 +101,33 @@ function switchPhoto(e) {
     }
 
 }
+
+const lazyLoad = target => {
+
+    const options = {
+        rootMargin: '75px 0px',
+        treshhold: 0.01,
+    };
+
+    const io = new IntersectionObserver((entries, observer) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.lazy;
+
+                observer.disconnect;
+            }
+        });
+
+    }, options)
+
+    io.observe(target);
+};
+
+const lazyPhotos = document.querySelectorAll('li img');
+
+lazyPhotos.forEach(photo => {
+    lazyLoad(photo);
+});
