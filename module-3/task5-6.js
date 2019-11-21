@@ -26,7 +26,11 @@ const products = [
 //     return finalArr;
 // }
 
-const getAllPropValues = (arr, prop) => arr.map(el => el[prop]).filter(el => el);
+const getAllPropValues = (arr, prop) =>
+    arr
+    .map(el => el[prop])
+    .filter(el => el);
+
 
 console.log(getAllPropValues(products, 'name')); // ['Радар', 'Сканер', 'Дроид', 'Захват']
 
@@ -54,9 +58,9 @@ console.log('TASK-6')
 
 const calculateTotalPrice = (arr, productName) => {
 
-    const totalCost = obj => obj.price * obj.quantity;
+    const totalCost = ({ price, quantity }) => price * quantity;
 
-    const findedObj = arr.find(el => el.name === productName);
+    const findedObj = arr.find(({ name }) => name === productName);
 
     return totalCost(findedObj);
 
