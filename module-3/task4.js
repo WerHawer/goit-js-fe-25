@@ -3,15 +3,18 @@
 alert('Выполняется задание №4. Сумма всех зарплат. Результат в коноле.');
 
 
-const countTotalSalary = (employees) => {
-    let totalSalary = 0;
+// const countTotalSalary = (employees) => {
+//     let totalSalary = 0;
 
-    const arrSalary = Object.values(employees);
-    for (let salary of arrSalary) {
-        totalSalary += salary;
-    }
-    return totalSalary;
-}
+//     const arrSalary = Object.values(employees);
+//     for (let salary of arrSalary) {
+//         totalSalary += salary;
+//     }
+//     return totalSalary;
+// }
+
+const countTotalSalary = (employees) => Object.values(employees).reduce((sum, el) => sum + el, 0);
+
 
 console.log(countTotalSalary({})); // 0
 

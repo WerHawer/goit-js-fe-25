@@ -18,3 +18,7 @@ let keysUser = Object.keys(user);
 for (let key of keysUser) {
     console.log(`${key}: ${user[key]}`)
 }
+
+// const { name, age, hobby, premium } = user;
+
+// console.log(`name: ${name}`)

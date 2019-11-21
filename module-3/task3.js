@@ -2,20 +2,30 @@
 
 alert('Выполняется задание №3. Лучший работник. Результат в коноле.');
 
+// const findBestEmployee = (employees) => {
+//     let bestEmployee;
+//     let maxTasks = 0;
+//     const arrEmployees = Object.keys(employees);
+//     for (let employee of arrEmployees) {
+
+//         if (maxTasks < employees[employee]) {
+//             maxTasks = employees[employee];
+//             bestEmployee = employee;
+//         }
+
+//     }
+//     return bestEmployee;
+// }
+
 const findBestEmployee = (employees) => {
-    let bestEmployee;
-    let maxTasks = 0;
-    const arrEmployees = Object.keys(employees);
-    for (let employee of arrEmployees) {
 
-        if (maxTasks < employees[employee]) {
-            maxTasks = employees[employee];
-            bestEmployee = employee;
-        }
+    const arrEmployeesValue = Object.values(employees).reduce((max, el) => max < el ? max = el : max);
 
-    }
-    return bestEmployee;
+    const arrEmployeesKeys = Object.keys(employees).find(el => employees[el] === arrEmployeesValue);
+
+    return arrEmployeesKeys;
 }
+
 
 console.log(
     findBestEmployee({
