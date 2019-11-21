@@ -109,7 +109,7 @@ const lazyLoad = target => {
         treshhold: 0.01,
     };
 
-    const io = new IntersectionObserver((entries, observer) => {
+    const forEntries = (entries, observer) => {
 
         entries.forEach(entry => {
 
@@ -121,7 +121,9 @@ const lazyLoad = target => {
             }
         });
 
-    }, options)
+    };
+
+    const io = new IntersectionObserver(forEntries, options)
 
     io.observe(target);
 };

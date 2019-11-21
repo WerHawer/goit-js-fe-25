@@ -13,18 +13,20 @@ const products = [
     { name: 'Захват', price: 1200, quantity: 2 },
 ];
 
-const getAllPropValues = (arr, prop) => {
-    const finalArr = [];
-    for (let i = 0; i < arr.length; i += 1) {
+// const getAllPropValues = (arr, prop) => {
+//     const finalArr = [];
+//     for (let i = 0; i < arr.length; i += 1) {
 
-        let product = arr[i][prop];
+//         let product = arr[i][prop];
 
-        if (prop in arr[i]) {
-            finalArr.push(product);
-        }
-    }
-    return finalArr;
-}
+//         if (prop in arr[i]) {
+//             finalArr.push(product);
+//         }
+//     }
+//     return finalArr;
+// }
+
+const getAllPropValues = (arr, prop) => arr.map(el => el[prop]).filter(el => el);
 
 console.log(getAllPropValues(products, 'name')); // ['Радар', 'Сканер', 'Дроид', 'Захват']
 
@@ -37,17 +39,27 @@ alert('Выполняется задание №6. Сумма заказа по 
 
 console.log('TASK-6')
 
+// const calculateTotalPrice = (arr, productName) => {
+//     let totalCost;
+
+//     for (let i = 0; i < arr.length; i += 1) {
+
+//         if (productName === arr[i].name) {
+//             totalCost = arr[i].price * arr[i].quantity;
+
+//         }
+//     }
+//     return totalCost;
+// }
+
 const calculateTotalPrice = (arr, productName) => {
-    let totalCost;
 
-    for (let i = 0; i < arr.length; i += 1) {
+    const totalCost = obj => obj.price * obj.quantity;
 
-        if (productName === arr[i].name) {
-            totalCost = arr[i].price * arr[i].quantity;
+    const findedObj = arr.find(el => el.name === productName);
 
-        }
-    }
-    return totalCost;
+    return totalCost(findedObj);
+
 }
 
 console.log(calculateTotalPrice(products, 'Радар')); // 5200
