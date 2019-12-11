@@ -11,9 +11,6 @@ class Car {
         this.maxSpeed = maxSpeed;
         this.isOn = isOn;
         this.distance = distance;
-
-
-
     }
 
     static getSpecs(car) {

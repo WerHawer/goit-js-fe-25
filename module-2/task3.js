@@ -2,17 +2,26 @@
 
 alert(`Выполняется задание №3 поиск самого длинного слова. Результат в консоле`);
 
-const findLongestWord = function(str) {
+// const findLongestWord = function(str) {
 
-    const arrStr = str.split(' ');
-    let longestWord = arrStr[0];
-    for (let word of arrStr) {
-        if (word.length > longestWord.length) {
-            longestWord = word;
-        }
-    }
-    return longestWord;
-};
+//     const arrStr = str.split(' ');
+//     let longestWord = arrStr[0];
+//     for (let word of arrStr) {
+//         if (word.length > longestWord.length) {
+//             longestWord = word;
+//         }
+//     }
+//     return longestWord;
+// };
+
+const findLongestWord = (str) =>
+    str
+    .split(' ')
+    .reduce((longestWord, word) => longestWord.length < word.length ? longestWord = word : longestWord);
+
+
+
+
 console.log(findLongestWord('The quick brown fox jumped over the lazy dog')); // 'jumped'
 
 console.log(findLongestWord('Google do a roll')); // 'Google'
