@@ -12,10 +12,10 @@ class CountdownTimer {
     }
 
     timeCalculate(time) {
-        const days = pad(Math.floor(time / (1000 * 60 * 60 * 24)));
-        const hours = pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-        const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-        const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
+        const days = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
+        const hours = this.pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+        const mins = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+        const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));
 
         return { days, hours, mins, secs };
     }
@@ -32,18 +32,23 @@ class CountdownTimer {
             const currentDate = Date.now();
             this.deltaTime = this.targetDate - currentDate;
             const calculatedTime = this.timeCalculate(this.deltaTime);
-
             this.timeToPage(calculatedTime);
 
         }, 1000)
     }
 
+    firstStart() {
+        const currentDate = Date.now();
+        this.deltaTime = this.targetDate - currentDate;
+        const calculatedTime = this.timeCalculate(this.deltaTime);
+        this.timeToPage(calculatedTime);
+    }
+
+    pad(value) {
+        return String(value).padStart(2, '0')
+    }
 }
 
 const timer = new CountdownTimer('#timer-1', new Date('Jan 1, 2020'));
-
-function pad(value) {
-    return String(value).padStart(2, '0')
-}
-
-timer.counter()
+timer.firstStart();
+timer.counter();
