@@ -1,0 +1,38 @@
+@media (max-width: 768px) {
+    .wrapper {
+        width: 90%;
+    }
+    .guest_list {
+        width: 60%;
+    }
+    .names {
+        width: 70%;
+    }
+    button {
+        margin-bottom: 40px;
+    }
+    .names {
+        background-color: rgba(255, 255, 255, 0);
+    }
+}
+
+@media (max-width: 570px) {
+    .secret_santa_h1 {
+        font-size: 40px;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    .guest_list {
+        width: 80%;
+    }
+    .names {
+        width: 85%;
+    }
+}
+
+@media (max-width: 375px) {
+    .secret_santa_h1 {
+        font-size: 36px;
+    }
+}
