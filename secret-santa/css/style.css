@@ -1,4 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
+    min-height: 100vh;
     background-color: rgb(228, 227, 227);
     background-image: url(../img/secret-santa-mob.jpg);
     background-repeat: no-repeat;
@@ -20,7 +26,7 @@ button {
     color: rgb(255, 249, 249);
     outline: none;
     padding: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 button:hover {
@@ -34,7 +40,7 @@ button:active {
 .wrapper {
     width: 75%;
     margin: 0 auto;
-    padding-top: 5px;
+    padding-top: 20px;
     text-align: center;
 }
 
@@ -42,7 +48,8 @@ button:active {
     text-transform: uppercase;
     font-size: 44px;
     color: seashell;
-    text-shadow: 4px 3px 0 #7A7A7A
+    text-shadow: 4px 3px 0 #7A7A7A;
+    margin-bottom: 30px;
 }
 
 .guest_list {
