@@ -1,0 +1,97 @@
+body {
+    background-color: rgb(228, 227, 227);
+    background-image: url(../img/SecretSanta.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    /* overflow: hidden; */
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    background: rgb(25, 233, 87);
+    border: none;
+    border-radius: 20px;
+    min-width: 50px;
+    min-height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(255, 249, 249);
+    outline: none;
+    padding: 8px;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    box-shadow: 0px 0px 19px 1px rgba(0, 0, 0, 0.75);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.wrapper {
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 35px;
+    text-align: center;
+}
+
+.secret_santa_h2 {
+    text-transform: uppercase;
+}
+
+.guest_list {
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    font-size: 14px;
+    font-family: serif;
+    margin-bottom: 15px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.75);
+}
+
+.names {
+    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    overflow-y: auto;
+    max-height: 320px;
+}
+
+.secret_santa,
+.for_whoom,
+.list {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+span {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+
+/* Style for scroll */
+
+#style-16::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+#style-16::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+#style-16::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #FFF;
+    background-image: -webkit-linear-gradient(top, #bfcdd3 0%, #8eabb8 50%, #91aab4 51%, #676969 100%);
+}

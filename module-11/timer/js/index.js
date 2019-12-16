@@ -2,6 +2,7 @@ class CountdownTimer {
     constructor(selector, targetDate) {
         this.selector = selector;
         this.targetDate = targetDate.getTime();
+        this.intervalId = 0;
         this.refs = {
             mainBlock: document.querySelector(this.selector),
             days: document.querySelector(`${this.selector} span[data-value="days"]`),
@@ -27,21 +28,25 @@ class CountdownTimer {
         this.refs.secs.textContent = secs;
     }
 
-    counter() {
-        setInterval(() => {
-            const currentDate = Date.now();
-            this.deltaTime = this.targetDate - currentDate;
-            const calculatedTime = this.timeCalculate(this.deltaTime);
-            this.timeToPage(calculatedTime);
-
-        }, 1000)
-    }
-
-    firstStart() {
+    timerReady() {
         const currentDate = Date.now();
         this.deltaTime = this.targetDate - currentDate;
         const calculatedTime = this.timeCalculate(this.deltaTime);
         this.timeToPage(calculatedTime);
+
+        if (this.deltaTime <= 0) {
+            this.deltaTime = 0;
+            this.timeToPage(this.timeCalculate(this.deltaTime));
+            clearInterval(this.intervalId);
+        }
+    }
+
+    counter() {
+        this.timerReady();
+
+        this.intervalId = setInterval(() => {
+            this.timerReady();
+        }, 1000)
     }
 
     pad(value) {
@@ -50,5 +55,5 @@ class CountdownTimer {
 }
 
 const timer = new CountdownTimer('#timer-1', new Date('Jan 1, 2020'));
-timer.firstStart();
+
 timer.counter();
