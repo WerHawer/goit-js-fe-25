@@ -12,7 +12,7 @@
         margin-bottom: 40px;
     }
     .names {
-        background-color: rgba(255, 255, 255, 0);
+        max-height: none;
     }
 }
 
@@ -27,8 +27,8 @@
         width: 80%;
     }
     .names {
+        background-color: rgba(255, 255, 255, 0);
         width: 85%;
-        max-height: none;
     }
 }
 
