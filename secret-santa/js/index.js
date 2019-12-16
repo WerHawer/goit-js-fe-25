@@ -25,6 +25,14 @@ const shaker = () => {
 
 }
 
+const forEnter = (e) => {
+    if (e.code !== 'Enter') {
+        return
+    }
+
+    shaker();
+}
+
 function createSecondArr(arr) {
 
     let mixedArr;
@@ -51,3 +59,4 @@ function marcupToPage(place, arr) {
 }
 
 refs.shakeBtn.addEventListener('click', shaker);
+window.addEventListener('keydown', forEnter);
