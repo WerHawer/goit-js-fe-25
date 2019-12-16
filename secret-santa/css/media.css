@@ -28,6 +28,7 @@
     }
     .names {
         width: 85%;
+        max-height: none;
     }
 }
 
