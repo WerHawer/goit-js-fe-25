@@ -11,7 +11,11 @@ const baseUrl = 'https://restcountries.eu/rest/v2/name/';
 
 PNotify.defaults.delay = 1000;
 
-input.addEventListener('input', debounce(() => {
+input.addEventListener('input', debounce(fetchCountry, 500))
+
+function fetchCountry() {
+
+    if (!input.value) return;
 
     fetch(baseUrl + input.value)
         .then(response => response.json())
@@ -26,7 +30,15 @@ input.addEventListener('input', debounce(() => {
 
             if (data.length > 1 && data.length < 11) {
                 output.innerHTML = '';
-                output.insertAdjacentHTML('beforeend', marckup(data))
+                output.insertAdjacentHTML('beforeend', marckup(data));
+
+                output.addEventListener('click', (e) => {
+                    input.value = e.target.innerText;
+                    console.log(input.value);
+                    fetchCountry();
+
+                })
+
             }
 
             if (data.length === 1) {
@@ -37,5 +49,4 @@ input.addEventListener('input', debounce(() => {
             console.log(data.length);
         })
         .catch(error => console.error(error));
-
-}, 500))
+}
