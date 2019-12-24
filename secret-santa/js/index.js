@@ -20,6 +20,7 @@ const shaker = () => {
 
     const secondArr = createSecondArr(namesList);
 
+    console.log(secondArr);
     marcupToPage(refs.santaOutput, namesList);
     marcupToPage(refs.presenterOutput, secondArr);
 
@@ -47,6 +48,35 @@ function createSecondArr(arr) {
 
     return mixedArr
 }
+
+
+// function createSecondArr(arr) {
+
+//     const mixedArr = [...arr].sort(() => Math.random() - 0.5);
+//     const result = [];
+//     let temp;
+
+//     arr.forEach(el => {
+
+//         if (mixedArr.length > 2) {
+
+//             if (el !== mixedArr[0]) {
+//                 result.push(mixedArr[0]);
+//                 temp = mixedArr.splice(0, 1);
+//             } else {
+//                 result.push(mixedArr[1]);
+//                 temp = mixedArr.splice(1, 1);
+//             }
+
+//         } else {
+//             mixedArr.reverse();
+//             result.push(mixedArr[0]);
+//         }
+//     });
+
+//     return result;
+// }
+
 
 function createMarcup(str, counter) {
     return `<span>${counter+1}. ${str}</span>`
