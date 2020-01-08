@@ -1,4 +1,5 @@
 import PNotify from './../../node_modules/pnotify/dist/es/PNotify.js';
+import axios from 'axios';
 
 const url = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&per_page=12&key=1992005-0c423af9a07f13d941d831108`
 
@@ -15,9 +16,8 @@ export default {
     fetchPhoto() {
         const requestParams = `&q=${this.query}&page=${this.page}`
 
-        return fetch(url + requestParams)
-            .then(response => response.json())
-            .then(parsedResponse => {
+        return axios.get(url + requestParams)
+            .then(({ data }) => {
 
                 this.incrementPage();
 
@@ -27,15 +27,17 @@ export default {
                     delay: 500,
                 });
 
-                return parsedResponse.hits;
+                return data.hits;
             })
             .catch(error => {
+
                 PNotify.error({
                     title: 'Oh No!',
                     text: error,
                     delay: 500,
                 });
-                this.prevPage -= 1;
+
+                this.decrementPrevPage();
             })
 
 
@@ -53,4 +55,8 @@ export default {
     resetPage() {
         this.page = 1;
     },
+
+    decrementPrevPage() {
+        this.prevPage -= 1;
+    }
 }
