@@ -10,7 +10,7 @@ const infScroll = new InfiniteScroll(elem, {
     // options
     path: '.pagination__next',
     scrollThreshold: 150,
-    // history: false,
+    history: false,
 });
 infScroll.on('scrollThreshold', function() {
 
@@ -23,3 +23,4 @@ infScroll.on('scrollThreshold', function() {
     photoApi.fetchPhoto().then(insertToPage)
     photoApi.prevPage = photoApi.page;
 });
+np
