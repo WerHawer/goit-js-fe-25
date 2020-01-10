@@ -1,7 +1,5 @@
 import photoApi from './../API/photo-servise.js';
 import insertToPage from './main.js';
-import * as throttle from 'lodash.throttle';
-// var throttle = require('lodash.throttle');
 import * as InfiniteScroll from 'infinite-scroll'
 
 const elem = document.querySelector('.gallery');
