@@ -21,7 +21,7 @@ function fetchCountry() {
         .then(response => response.json())
         .then(data => {
             const [country] = data;
-
+            console.log(data);
             if (data.length > 10) {
                 PNotify.error({
                     text: 'Too many matches'
