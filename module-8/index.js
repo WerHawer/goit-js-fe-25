@@ -91,7 +91,6 @@ function switchPhoto(e) {
     console.log("forvard");
 
     if (!nowOpen.nextSibling) {
-      console.log("!!!!");
       bigPhoto.src = galeryArea.firstElementChild.firstElementChild.href;
       nowOpen = galeryArea.firstElementChild.nextSibling;
       return;
@@ -144,5 +143,3 @@ const lazyPhotos = document.querySelectorAll("li img");
 lazyPhotos.forEach(photo => {
   lazyLoad(photo);
 });
-
-console.dir(galeryArea);
